@@ -29,7 +29,7 @@ function stopTask(): void {
 async function executeJob(): Promise<void> {
   const state = getState();
   if (state.isRunning) {
-    appendLog('warning', 'Scheduled cleanup skipped: previous run still in progress.');
+    await appendLog('warning', 'Scheduled cleanup skipped: previous run still in progress.');
     return;
   }
 
@@ -41,17 +41,17 @@ async function executeJob(): Promise<void> {
   }
 }
 
-export function refreshScheduler(): void {
+export async function refreshScheduler(): Promise<void> {
   stopTask();
 
-  const config = getSettings();
+  const config = await getSettings();
   if (!config.schedule_enabled) {
     return;
   }
 
   const expression = toCronExpression(config.schedule_frequency, config.schedule_hour);
   if (!cron.validate(expression)) {
-    appendLog('error', `Invalid cron expression for scheduler: ${expression}`);
+    await appendLog('error', `Invalid cron expression for scheduler: ${expression}`);
     return;
   }
 
@@ -60,12 +60,12 @@ export function refreshScheduler(): void {
   });
 
   getState().task = task;
-  appendLog(
+  await appendLog(
     'info',
     `Scheduler active: ${config.schedule_frequency} at ${config.schedule_hour}:00 (server local time).`,
   );
 }
 
-export function initScheduler(): void {
-  refreshScheduler();
+export async function initScheduler(): Promise<void> {
+  await refreshScheduler();
 }

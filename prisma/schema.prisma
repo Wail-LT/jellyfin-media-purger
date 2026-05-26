@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Settings {
+  id                   Int      @id @default(1)
+  jellyfin_url         String   @default("")
+  jellyfin_api_key     String   @default("")
+  jellyfin_user_id     String   @default("")
+  radarr_url           String   @default("")
+  radarr_api_key       String   @default("")
+  months_threshold     Int      @default(3)
+  schedule_enabled     Int      @default(0)
+  schedule_frequency   String   @default("weekly")
+  schedule_hour        Int      @default(3)
+  schedule_last_run_at String   @default("")
+  updated_at           DateTime @default(now()) @updatedAt
+
+  @@map("settings")
+}
+
+model OperationLog {
+  id        Int      @id @default(autoincrement())
+  timestamp DateTime @default(now())
+  level     String   @default("info")
+  message   String
+
+  @@map("operation_logs")
+}

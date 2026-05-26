@@ -9,10 +9,10 @@ export async function purgeMovies(
   config: AppConfig,
 ): Promise<PurgeResult[]> {
   const results: PurgeResult[] = [];
-  appendLog('info', `Starting purge of ${items.length} selected movie(s)...`);
+  await appendLog('info', `Starting purge of ${items.length} selected movie(s)...`);
 
   for (const item of items) {
-    appendLog('info', `Processing: "${item.name}"`);
+    await appendLog('info', `Processing: "${item.name}"`);
     let radarrDeleted = false;
     let jellyfinDeleted = false;
     let error: string | undefined;
@@ -21,18 +21,18 @@ export async function purgeMovies(
       if (item.matchedInRadarr && item.radarrId) {
         await deleteRadarrMovie(config.radarr_url, config.radarr_api_key, item.radarrId);
         radarrDeleted = true;
-        appendLog('success', `Radarr deleted movie ID ${item.radarrId}.`);
+        await appendLog('success', `Radarr deleted movie ID ${item.radarrId}.`);
       } else {
         radarrDeleted = true; // nothing to do
-        appendLog('warning', `"${item.name}" has no Radarr match — skipping Radarr deletion.`);
+        await appendLog('warning', `"${item.name}" has no Radarr match — skipping Radarr deletion.`);
       }
 
       await deleteJellyfinItem(config.jellyfin_url, config.jellyfin_api_key, item.id);
       jellyfinDeleted = true;
-      appendLog('success', `Jellyfin deleted item ${item.id}.`);
+      await appendLog('success', `Jellyfin deleted item ${item.id}.`);
     } catch (e: unknown) {
       error = e instanceof Error ? e.message : String(e);
-      appendLog('error', `Error processing "${item.name}": ${error}`);
+      await appendLog('error', `Error processing "${item.name}": ${error}`);
     }
 
     results.push({
@@ -45,6 +45,6 @@ export async function purgeMovies(
     });
   }
 
-  appendLog('info', 'Purge workflow complete.');
+  await appendLog('info', 'Purge workflow complete.');
   return results;
 }

@@ -5,7 +5,7 @@ import { getSettings } from '@/lib/db/settings';
 import { fetchJellyfinUsers } from '@/lib/jellyfin/users';
 
 export async function GET() {
-  const { jellyfin_url, jellyfin_api_key } = getSettings();
+  const { jellyfin_url, jellyfin_api_key } = await getSettings();
 
   if (!jellyfin_url || !jellyfin_api_key) {
     return NextResponse.json(

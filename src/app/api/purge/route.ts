@@ -10,7 +10,7 @@ interface PurgeRequestBody {
 }
 
 export async function POST(request: Request) {
-  const config = getSettings();
+  const config = await getSettings();
 
   if (!config.jellyfin_url || !config.jellyfin_api_key) {
     return NextResponse.json(

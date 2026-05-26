@@ -5,7 +5,7 @@ import { getSettings } from '@/lib/db/settings';
 import { scanMovies } from '@/lib/services/scanMovies';
 
 export async function POST() {
-  const config = getSettings();
+  const config = await getSettings();
 
   if (!config.jellyfin_url || !config.jellyfin_api_key || !config.jellyfin_user_id) {
     return NextResponse.json(

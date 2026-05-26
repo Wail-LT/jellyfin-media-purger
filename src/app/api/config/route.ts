@@ -2,9 +2,9 @@ export const runtime = 'nodejs';
 
 import { NextResponse } from 'next/server';
 import { getSettings, updateSettings, maskKey, isValidScheduleFrequency } from '@/lib/db/settings';
-import type { AppConfigUpdate } from '@/types/config';
+import type { AppConfig, AppConfigUpdate } from '@/types/config';
 
-function toPublicConfig(settings: ReturnType<typeof getSettings>) {
+function toPublicConfig(settings: AppConfig) {
   return {
     jellyfin_url: settings.jellyfin_url,
     jellyfin_user_id: settings.jellyfin_user_id,
@@ -34,7 +34,7 @@ function validateScheduleUpdates(body: AppConfigUpdate): string | null {
 }
 
 export async function GET() {
-  return NextResponse.json(toPublicConfig(getSettings()));
+  return NextResponse.json(toPublicConfig(await getSettings()));
 }
 
 export async function PUT(request: Request) {
@@ -44,6 +44,6 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: validationError }, { status: 400 });
   }
 
-  const updated = updateSettings(body);
+  const updated = await updateSettings(body);
   return NextResponse.json(toPublicConfig(updated));
 }

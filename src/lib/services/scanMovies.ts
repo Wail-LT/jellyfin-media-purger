@@ -8,14 +8,14 @@ import type { MediaItem } from '@/types/media';
 export async function scanMovies(config: AppConfig): Promise<MediaItem[]> {
   const { jellyfin_url, jellyfin_api_key, jellyfin_user_id, radarr_url, radarr_api_key, months_threshold } = config;
 
-  appendLog('info', 'Starting scan for fully viewed movies...');
+  await appendLog('info', 'Starting scan for fully viewed movies...');
 
   const fullyViewed = await fetchAllFullyViewedMovies(jellyfin_url, jellyfin_api_key, jellyfin_user_id);
-  appendLog('info', `Found ${fullyViewed.length} fully viewed movie(s) in Jellyfin.`);
+  await appendLog('info', `Found ${fullyViewed.length} fully viewed movie(s) in Jellyfin.`);
 
   const cutoffDate = new Date();
   cutoffDate.setMonth(cutoffDate.getMonth() - months_threshold);
-  appendLog('info', `Applying cut-off: items not viewed since ${cutoffDate.toLocaleDateString()}`);
+  await appendLog('info', `Applying cut-off: items not viewed since ${cutoffDate.toLocaleDateString()}`);
 
   const baseItems = fullyViewed
     .filter((item) => {
@@ -32,20 +32,20 @@ export async function scanMovies(config: AppConfig): Promise<MediaItem[]> {
       externalIds: mapProviderIds(item.ProviderIds),
     }));
 
-  appendLog('info', `${baseItems.length} movie(s) older than ${months_threshold} months. Matching with Radarr...`);
+  await appendLog('info', `${baseItems.length} movie(s) older than ${months_threshold} months. Matching with Radarr...`);
 
   let radarrMovies: RadarrMovie[] = [];
   if (radarr_url && radarr_api_key) {
     try {
       radarrMovies = await listRadarrMovies(radarr_url, radarr_api_key);
-      appendLog('info', `Fetched ${radarrMovies.length} movies from Radarr for cross-reference.`);
+      await appendLog('info', `Fetched ${radarrMovies.length} movies from Radarr for cross-reference.`);
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : String(e);
-      appendLog('warning', `Could not fetch Radarr movies: ${msg}`);
+      await appendLog('warning', `Could not fetch Radarr movies: ${msg}`);
     }
   }
 
   const enriched = matchMovies(baseItems, radarrMovies);
-  appendLog('success', `Scan complete. ${enriched.length} movies ready.`);
+  await appendLog('success', `Scan complete. ${enriched.length} movies ready.`);
   return enriched;
 }
