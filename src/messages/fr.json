@@ -76,7 +76,22 @@
     "keepExistingRadarrKey": "Clé actuelle : {key}. Laisser vide pour conserver.",
     "saveRadarr": "Enregistrer les paramètres Radarr",
     "thresholdTitle": "Seuil de coupure de visionnage",
-    "thresholdHint": "Ne suggère la suppression que des films vus il y a plus de {months} mois."
+    "thresholdHint": "Ne suggère la suppression que des films vus il y a plus de {months} mois.",
+    "scheduler": {
+      "title": "3. Nettoyage planifié",
+      "subtitle": "Analyse et purge automatiques des films éligibles selon une planification",
+      "warning": "Lorsqu'il est activé, chaque exécution planifiée supprime tous les films retournés par l'analyse (au-dessus du seuil de coupure) dans Jellyfin et Radarr si recoupés. Aucune validation manuelle.",
+      "serverTimeNote": "Ne s'exécute que tant que l'application tourne (next dev / next start). La planification utilise le fuseau horaire local du serveur.",
+      "enable": "Activer le nettoyage planifié",
+      "frequency": "Fréquence",
+      "frequencyDaily": "Quotidien",
+      "frequencyWeekly": "Hebdomadaire (dimanche)",
+      "frequencyMonthly": "Mensuel (1er du mois)",
+      "hour": "Heure",
+      "hourOption": "{hour}:00",
+      "lastRun": "Dernière exécution : {time}",
+      "lastRunNever": "Jamais"
+    }
   },
   "logs": {
     "title": "Journal d'exécution",

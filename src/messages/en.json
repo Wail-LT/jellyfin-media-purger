@@ -76,7 +76,22 @@
     "keepExistingRadarrKey": "Current key: {key}. Leave blank to keep existing.",
     "saveRadarr": "Save Radarr Settings",
     "thresholdTitle": "Watch Cut-off Threshold",
-    "thresholdHint": "Only suggests deletion of movies last watched more than {months} months ago."
+    "thresholdHint": "Only suggests deletion of movies last watched more than {months} months ago.",
+    "scheduler": {
+      "title": "3. Scheduled Cleanup",
+      "subtitle": "Automatically scan and purge eligible movies on a recurring schedule",
+      "warning": "When enabled, every scheduled run deletes all movies returned by the scan (above the watch cut-off threshold) from Jellyfin and Radarr when matched. No manual review step.",
+      "serverTimeNote": "Runs only while this app process is running (next dev / next start). Schedule uses the server's local time zone.",
+      "enable": "Enable scheduled cleanup",
+      "frequency": "Frequency",
+      "frequencyDaily": "Daily",
+      "frequencyWeekly": "Weekly (Sunday)",
+      "frequencyMonthly": "Monthly (1st)",
+      "hour": "Time of day",
+      "hourOption": "{hour}:00",
+      "lastRun": "Last run: {time}",
+      "lastRunNever": "Never"
+    }
   },
   "logs": {
     "title": "Console Runtime Log",

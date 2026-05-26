@@ -3,6 +3,7 @@
 import JellyfinSettingsForm from '@/components/config/JellyfinSettingsForm';
 import RadarrSettingsForm from '@/components/config/RadarrSettingsForm';
 import ThresholdSlider from '@/components/config/ThresholdSlider';
+import SchedulerSettingsForm from '@/components/config/SchedulerSettingsForm';
 import { useConfig } from '@/hooks/useConfig';
 import { useTranslations } from '@/providers/I18nProvider';
 
@@ -41,6 +42,8 @@ export default function ConfigPage() {
           <ThresholdSlider value={config.months_threshold} onSave={save} saving={saving} />
         </div>
       </div>
+
+      <SchedulerSettingsForm config={config} onSave={save} saving={saving} />
     </div>
   );
 }
