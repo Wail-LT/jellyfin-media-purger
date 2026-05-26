@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "title": "Jellyfin Movie Purger",
+    "description": "Identify and safely delete fully viewed movies across Jellyfin and Radarr"
+  },
+  "common": {
+    "yes": "Yes",
+    "no": "No",
+    "saving": "Saving...",
+    "connecting": "Connecting...",
+    "notConfigured": "Not configured",
+    "notSet": "Not set",
+    "enterApiKey": "Enter API key",
+    "months": "{count} months",
+    "monthsLabel": "Months",
+    "refresh": "Refresh",
+    "error": "Error",
+    "pending": "Pending",
+    "purged": "Purged",
+    "deleting": "Deleting...",
+    "purgedSuccessfully": "Purged successfully",
+    "failed": "Failed"
+  },
+  "nav": {
+    "scan": "Cleanup Console",
+    "config": "Server Connections",
+    "logs": "Operational Logs"
+  },
+  "header": {
+    "title": "Jellyfin Movie Purger",
+    "subtitle": "Identify and safely delete fully viewed movies across Jellyfin and Radarr"
+  },
+  "warning": {
+    "label": "Caution:",
+    "message": "This tool permanently removes matched movies from disk through Radarr and Jellyfin. Always review your selection before purging."
+  },
+  "scan": {
+    "title": "Library Diagnostics Control",
+    "description": "Scans Jellyfin and Radarr for fully viewed movies not watched in the last {months} months.",
+    "threshold": "Threshold: > {months} months",
+    "profile": "Profile: {name}",
+    "scanButton": "Scan Fully Viewed Movies",
+    "scanning": "Scanning...",
+    "purgeButton": "Execute Purge ({count})",
+    "searchPlaceholder": "Search movies...",
+    "selectAllMatched": "Select All Matched",
+    "deselectAll": "Deselect All",
+    "colSelect": "Select",
+    "colTitle": "Title",
+    "colLastWatched": "Last Watched",
+    "colRadarrMatch": "Radarr Match",
+    "colStatus": "Status",
+    "emptyTitle": "No movies found.",
+    "emptyHint": "Run a scan or adjust the threshold in Server Connections.",
+    "playedCount": "{count}× played",
+    "matchedRadarr": "Matched Radarr (ID: {id})",
+    "monitored": "Monitored:",
+    "noRadarrLink": "No Radarr Link"
+  },
+  "config": {
+    "loading": "Loading configuration...",
+    "loadFailed": "Failed to load configuration.",
+    "jellyfinTitle": "1. Jellyfin Connection",
+    "jellyfinSubtitle": "Required to scan watch history and delete items",
+    "serverUrl": "Server URL",
+    "adminApiKey": "Admin API Key",
+    "keepExistingKey": "Leave blank to keep the existing key. Current: {key}",
+    "fetchUsers": "Fetch Users & Validate API",
+    "activeUser": "Active User",
+    "selectUser": "-- Select User --",
+    "saveJellyfin": "Save Jellyfin Settings",
+    "radarrTitle": "2. Radarr Integration",
+    "radarrSubtitle": "Used to cross-reference and delete movie files",
+    "url": "URL",
+    "apiKey": "API Key",
+    "keepExistingRadarrKey": "Current key: {key}. Leave blank to keep existing.",
+    "saveRadarr": "Save Radarr Settings",
+    "thresholdTitle": "Watch Cut-off Threshold",
+    "thresholdHint": "Only suggests deletion of movies last watched more than {months} months ago."
+  },
+  "logs": {
+    "title": "Console Runtime Log",
+    "clear": "Clear Log",
+    "empty": "> Log empty. Perform a scan or purge to generate operational output."
+  },
+  "language": {
+    "label": "Language"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "metadata": {
+    "title": "Purgeur de films Jellyfin",
+    "description": "Identifiez et supprimez en toute sécurité les films entièrement vus via Jellyfin et Radarr"
+  },
+  "common": {
+    "yes": "Oui",
+    "no": "Non",
+    "saving": "Enregistrement...",
+    "connecting": "Connexion...",
+    "notConfigured": "Non configuré",
+    "notSet": "Non défini",
+    "enterApiKey": "Saisir la clé API",
+    "months": "{count} mois",
+    "monthsLabel": "Mois",
+    "refresh": "Actualiser",
+    "error": "Erreur",
+    "pending": "En attente",
+    "purged": "Supprimé",
+    "deleting": "Suppression...",
+    "purgedSuccessfully": "Supprimé avec succès",
+    "failed": "Échec"
+  },
+  "nav": {
+    "scan": "Console de nettoyage",
+    "config": "Connexions serveur",
+    "logs": "Journaux opérationnels"
+  },
+  "header": {
+    "title": "Purgeur de films Jellyfin",
+    "subtitle": "Identifiez et supprimez en toute sécurité les films entièrement vus via Jellyfin et Radarr"
+  },
+  "warning": {
+    "label": "Attention :",
+    "message": "Cet outil supprime définitivement du disque les films correspondants via Radarr et Jellyfin. Vérifiez toujours votre sélection avant de purger."
+  },
+  "scan": {
+    "title": "Contrôle du diagnostic bibliothèque",
+    "description": "Analyse Jellyfin et Radarr pour les films entièrement vus non regardés depuis {months} mois.",
+    "threshold": "Seuil : > {months} mois",
+    "profile": "Profil : {name}",
+    "scanButton": "Analyser les films entièrement vus",
+    "scanning": "Analyse en cours...",
+    "purgeButton": "Exécuter la purge ({count})",
+    "searchPlaceholder": "Rechercher des films...",
+    "selectAllMatched": "Tout sélectionner (correspondances)",
+    "deselectAll": "Tout désélectionner",
+    "colSelect": "Sélection",
+    "colTitle": "Titre",
+    "colLastWatched": "Dernière lecture",
+    "colRadarrMatch": "Correspondance Radarr",
+    "colStatus": "Statut",
+    "emptyTitle": "Aucun film trouvé.",
+    "emptyHint": "Lancez une analyse ou ajustez le seuil dans Connexions serveur.",
+    "playedCount": "{count}× visionné(s)",
+    "matchedRadarr": "Radarr associé (ID : {id})",
+    "monitored": "Surveillé :",
+    "noRadarrLink": "Aucun lien Radarr"
+  },
+  "config": {
+    "loading": "Chargement de la configuration...",
+    "loadFailed": "Échec du chargement de la configuration.",
+    "jellyfinTitle": "1. Connexion Jellyfin",
+    "jellyfinSubtitle": "Requis pour analyser l'historique et supprimer des éléments",
+    "serverUrl": "URL du serveur",
+    "adminApiKey": "Clé API administrateur",
+    "keepExistingKey": "Laisser vide pour conserver la clé existante. Actuelle : {key}",
+    "fetchUsers": "Récupérer les utilisateurs et valider l'API",
+    "activeUser": "Utilisateur actif",
+    "selectUser": "-- Choisir un utilisateur --",
+    "saveJellyfin": "Enregistrer les paramètres Jellyfin",
+    "radarrTitle": "2. Intégration Radarr",
+    "radarrSubtitle": "Utilisé pour recouper et supprimer les fichiers films",
+    "url": "URL",
+    "apiKey": "Clé API",
+    "keepExistingRadarrKey": "Clé actuelle : {key}. Laisser vide pour conserver.",
+    "saveRadarr": "Enregistrer les paramètres Radarr",
+    "thresholdTitle": "Seuil de coupure de visionnage",
+    "thresholdHint": "Ne suggère la suppression que des films vus il y a plus de {months} mois."
+  },
+  "logs": {
+    "title": "Journal d'exécution",
+    "clear": "Effacer le journal",
+    "empty": "> Journal vide. Lancez une analyse ou une purge pour générer des entrées."
+  },
+  "language": {
+    "label": "Langue"
+  }
+}
